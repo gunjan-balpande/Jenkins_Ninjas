@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage - NinjaBazzar</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <i class="fas fa-ninja"></i>
+        <h1>NinjaBazaar</h1>
+      </div>
+      <nav class="nav-links" id="navbar">
+        <a href="index.html">Home</a>
+        <a href="#products">Products</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="shop-now">
+        <div class="welcome-message" id="welcomeMessage"></div>
+        <h2>Discover the Art of Stealth</h2>
+        <p>Explore our premium ninja gear and accessories</p>
+        <a href="#products" class="cta-button">Shop Now</a>
+      </section>
+
+      <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+          <div class="product-item" id="product1">
+            <img src="images/1.jpg" alt="Ninja backpacks" />
+            <h3>Ninja backpacks</h3>
+            <p>₹2,299</p>
+            <button
+              class="add-to-cart"
+              data-product="Ninja backpacks"
+              data-price="2299"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div class="product-item" id="product2">
+            <img src="images/2.png" alt="Ninja-themed books" />
+            <h3>Ninja-themed books</h3>
+            <p>₹5,499</p>
+            <button
+              class="add-to-cart"
+              data-product="Ninja-themed books"
+              data-price="5499"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div class="product-item" id="product3">
+            <img src="images/3.jpg" alt="Katana" />
+            <h3>Katana</h3>
+            <p>₹7,999</p>
+            <button class="add-to-cart" data-product="Katana" data-price="7999">
+              Add to Cart
+            </button>
+          </div>
+          <div class="product-item" id="product4">
+            <img src="images/4.jpg" alt="Shuriken" />
+            <h3>Shuriken</h3>
+            <p>₹1,299</p>
+            <button
+              class="add-to-cart"
+              data-product="Shuriken"
+              data-price="1299"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div class="product-item" id="product5">
+            <img src="images/5.jpg" alt="Ninja mask" />
+            <h3>Ninja mask</h3>
+            <p>₹899</p>
+            <button
+              class="add-to-cart"
+              data-product="Ninja mask"
+              data-price="899"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div class="product-item" id="product6">
+            <img src="images/6.jpg" alt="Throwing knives" />
+            <h3>Throwing knives</h3>
+            <p>₹3,499</p>
+            <button
+              class="add-to-cart"
+              data-product="Throwing knives"
+              data-price="3499"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div class="product-item" id="product7">
+            <img src="images/7.jpg" alt="Ninja backpacks" />
+            <h3>Ninja backpacks</h3>
+            <p>₹2,299</p>
+            <button
+              class="add-to-cart"
+              data-product="Ninja backpacks"
+              data-price="2299"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div class="product-item" id="product8">
+            <img src="images/8.jpg" alt="Ninja-themed books" />
+            <h3>Ninja-themed books</h3>
+            <p>₹5,499</p>
+            <button
+              class="add-to-cart"
+              data-product="Ninja-themed books"
+              data-price="5499"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 NinjaBazzar</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const username = localStorage.getItem("username");
+        if (username) {
+          const welcomeMessage = document.getElementById("welcomeMessage");
+          welcomeMessage.textContent = `Welcome, ${username}`;
+          welcomeMessage.style.fontSize = "30px";
+          localStorage.removeItem("username");
+        }
+      });
+    </script>
+  </body>
+</html>

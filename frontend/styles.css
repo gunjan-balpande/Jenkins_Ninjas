@@ -1,0 +1,288 @@
+/* General Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+  position: sticky;
+  top: 0;
+  background-color: #131a22;
+  padding: 20px 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #ff9900;
+}
+
+header h1 {
+  color: #ff9900;
+  margin: 0;
+  font-size: 28px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+/* Dropdown for My Profile */
+.nav-links .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-links .dropdown .dropbtn {
+  background-color: #131a22;
+  color: white;
+  /* padding: 16px; */
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  /* border-radius: 4px; */
+}
+
+.nav-links .dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+  top: 110%;
+}
+
+.nav-links .dropdown .dropdown-content a {
+  color: black;
+  font-size: 18px;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-links .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-links .dropdown:hover .dropbtn {
+  background-color: #3b3b3b;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+/* Welcome Message */
+.welcome-message {
+  font-size: 30px;
+  font-weight: bold;
+  max-width: 600px;
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Main Content */
+main {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Shop Now Section */
+.shop-now {
+  text-align: center;
+  padding: 40px 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.shop-now h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.shop-now p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.shop-now button {
+  display: inline-block;
+  background-color: #ff9900;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.cta-button {
+  display: inline-block;
+  background-color: #ff9900;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.shop-now button:hover {
+  background-color: #e68a00;
+}
+#products {
+  scroll-margin-top: 80px; /* Adjust according to your navbar's height */
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.product-item img {
+  width: 100%; /* Make sure the image takes up full width of the container */
+  height: 250px; /* Set a fixed height to ensure consistency */
+  object-fit: cover; /* Ensures the image covers the space without distortion */
+  margin-bottom: 15px;
+}
+
+.product-item h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.product-item p {
+  font-size: 16px;
+  color: #666;
+}
+
+.product-item button {
+  background-color: #ff9900;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.product-item button:hover {
+  background-color: #f90;
+}
+h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 40px;
+}
+/* Footer */
+footer {
+  background-color: #131a22;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Form Container Styles */
+.form-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* Form Title Styles */
+.form-container h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Form Styles */
+#loginForm,
+#registerForm {
+  text-align: left;
+}
+
+#loginForm label,
+#registerForm label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+#loginForm input[type="text"],
+#loginForm input[type="password"],
+#registerForm input[type="text"],
+#registerForm input[type="password"] {
+  width: 94%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+#loginForm button,
+#registerForm button {
+  width: 100%;
+  background-color: #ff9900;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+#loginForm button:hover,
+#registerForm button:hover {
+  background-color: #e68a00;
+}
+
+#registerMessage {
+  margin-top: 15px;
+  display: none; /* Hide by default */
+}
