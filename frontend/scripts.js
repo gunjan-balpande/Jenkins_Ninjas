@@ -1,4 +1,4 @@
-const backendBaseUrl = "http://54.163.62.93"; // Replace with your public EC2 instance IP or DNS
+const backendBaseUrl = "http://54.177.225.81"; // Replace with your public EC2 instance IP or DNS
 
 // Register form submission handler
 document
