@@ -1,5 +1,5 @@
 resource "aws_security_group" "ec2_sg" {
-  name        = var.security_groups_ec2
+  name        = "Jenkins_Ninjas_ec2-security-group"
   description = "Security group for EC2 instance allowing SSH, HTTP, HTTPS, and MySQL"
   vpc_id     = aws_vpc.main.id  # Replace with your VPC ID
 
@@ -42,7 +42,7 @@ resource "aws_security_group" "ec2_sg" {
 # EC2 2
 
 resource "aws_security_group" "ec2_sg2" {
-  name        = var.security_groups_ec2_b
+  name        = "Jenkins_Ninjas_ec2-security-group2"
   description = "Security group for EC2 instance allowing SSH, HTTP, HTTPS, and MySQL"
   vpc_id      = aws_vpc.main.id  # Replace with your VPC ID
 

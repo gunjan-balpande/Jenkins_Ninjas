@@ -4,7 +4,7 @@ resource "aws_route_table" "private_rt" {
   route = []  # No routes defined initially
 
   tags = {
-    Name = var.route_table_private
+    Name = "Jenkins_Ninjas_PrivateRouteTable"
   }
 }
 

@@ -1,0 +1,104 @@
+pipeline {
+    agent any
+    environment {
+        AWS_ACCOUNT_ID = '022499043090'
+        SNS_TOPIC_NAME = 'JenkinsNinja'
+		AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        AWS_DEFAULT_REGION = "us-west-1"
+    }
+	stages {
+        stage('Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gunjan-balpande/Jenkins_Ninjas.git']])
+            }
+        }
+    
+		stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('Sonarqube') {
+                    script {
+                        def scannerHome = tool 'SonarQubeScanner-6.1.0'
+                        bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Jenkins_Ninjas -Dsonar.sources=."
+                    }
+                }
+            }
+        }
+        stage('Initializing Terraform'){
+            steps{
+                script{
+                    dir('terraform'){
+                        bat 'terraform init'
+                    }
+                }
+            }
+        }
+        stage('Formatting Terraform Code'){
+            steps{
+                script{
+                    dir('terraform'){
+                        bat 'terraform fmt'
+                    }
+                }
+            }
+        }
+        stage('Validating Terraform'){
+            steps{
+                script{
+                    dir('terraform'){
+                        bat 'terraform validate'
+                    }
+                }
+            }
+        }
+        stage('Previewing the Infra using Terraform'){
+            steps{
+                script{
+                    dir('terraform'){
+                        bat 'terraform plan'
+                    }
+                }
+            }
+        }
+        /*stage('Creating AWS Infrastructure'){
+            steps{
+                script{               
+                    dir('terraform') {
+                        bat "terraform apply --auto-approve"
+                    }
+                }
+            }
+        }*/
+        stage('Frontend Deployment'){
+            steps{
+                script{               
+                    dir('frontend') {
+                        bat "aws s3 cp . s3://jenkins-ninjas-static-website-bucket --recursive"
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                def jobStatus = currentBuild.currentResult
+                def subject = "Jenkins Job '${env.JOB_NAME}' - Build #${env.BUILD_NUMBER} - ${jobStatus}"
+                def body = """
+                    Job: ${env.JOB_NAME}
+                    Build Number: ${env.BUILD_NUMBER}
+                    Status: ${jobStatus}
+                    
+                    Check console output at ${env.BUILD_URL} for more details.
+                """
+                    snsPublish(
+                        topicArn: "arn:aws:sns:${AWS_DEFAULT_REGION}:${AWS_ACCOUNT_ID}:${SNS_TOPIC_NAME}",
+                        subject: subject,
+                        message: body
+                    )
+                }
+            }
+        }
+    }
+
+

@@ -7,7 +7,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = var.route_table_public
+    Name = "Jenkins_Ninja_Public_Route_Table"
   }
 }
 

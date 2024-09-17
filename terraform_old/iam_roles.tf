@@ -1,5 +1,5 @@
 resource "aws_iam_policy" "rds_full_access" {
-  name        = var.iam_rds_policy
+  name        = "RDSFullAccess"
   description = "Full access to Amazon RDS"
   policy      = jsonencode({
     Version = "2012-10-17"
@@ -14,7 +14,7 @@ resource "aws_iam_policy" "rds_full_access" {
 }
 
 resource "aws_iam_policy" "s3_full_access" {
-  name        = var.iam_s3_policy
+  name        = "S3FullAccess"
   description = "Full access to Amazon S3"
   policy      = jsonencode({
     Version = "2012-10-17"
@@ -28,10 +28,8 @@ resource "aws_iam_policy" "s3_full_access" {
   })
 }
 
-
-
 resource "aws_iam_role" "ec2_role" {
-  name               = var.iam_ec2_policy
+  name               = "EC2FullAccessRole"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -57,8 +55,6 @@ resource "aws_iam_role_policy_attachment" "attach_s3_policy" {
 }
 
 resource "aws_iam_instance_profile" "ec2_instance_profile" {
-  name = var.iam_ec2_profile
+  name = "EC2InstanceProfile"
   role = aws_iam_role.ec2_role.name
 }
-
-

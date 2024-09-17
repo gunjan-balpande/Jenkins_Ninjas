@@ -1,13 +1,24 @@
 # Create S3 bucket for static website hosting
 resource "aws_s3_bucket" "static_website_bucket" {
-  bucket = var.s3_static  
+  bucket = "jenkins-ninjas-static-website-bucket"  # Ensure this bucket name is globally unique
 
+  # Removed deprecated website block
+  
+
+  tags = {
+    Name = "Jenkins_Ninjas_S3_SWH"
   }
+}
+
+
 
 # Create S3 bucket for RDS backups
 resource "aws_s3_bucket" "backup_bucket" {
-  bucket = var.s3_backup
+  bucket = "jenkins-ninjas-backup-bucket"  # Ensure this bucket name is globally unique
 
+  tags = {
+    Name = "Jenkins_Ninjas_S3_Backup"
+  }
 }
 
 # Configure the S3 bucket for static website hosting

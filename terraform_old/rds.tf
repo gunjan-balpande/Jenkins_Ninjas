@@ -14,7 +14,10 @@ resource "aws_db_instance" "my_rds" {
   publicly_accessible  = false  # Set to true to allow public access
 
   tags = {
-    Name = var.rds
+    Name = "Jenkins_Ninjas_MySQL_RDS"
   }
 }
 
+#output "rds_endpoint" {
+ # value = aws_db_instance.my_rds.endpoint
+#}

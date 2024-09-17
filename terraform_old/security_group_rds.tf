@@ -17,6 +17,6 @@ resource "aws_security_group" "rds_sg" {
   }
 
   tags = {
-    Name = var.security_groups_rds
+    Name = "Jenkins_Ninjas_RDS_Security_Group"
   }
 }
